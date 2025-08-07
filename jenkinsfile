@@ -4,7 +4,9 @@ pipeline {
     stages {
         stage('Clone Repository') {
             steps {
-                git 'https://github.com/developwithvikas/devops.git'
+                checkout([$class: 'GitSCM',
+                          branches: [[name: 'main']],
+                          userRemoteConfigs: [[url: 'https://github.com/developwithvikas/devops.git']]])
             }
         }
 
